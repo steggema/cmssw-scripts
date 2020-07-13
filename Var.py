@@ -1,7 +1,7 @@
 import numpy
 
 class Var(object):
-    def __init__(self, name, vtype):
+    def __init__(self, name, vtype=float):
         self.name = name
         self.type = vtype
         self.storage = numpy.zeros(1, dtype=vtype)
@@ -17,3 +17,7 @@ class Var(object):
 
     def __str__(self):
         return 'Var: name={}, vtype={}, val={:.2f}'.format(self.name, self.type, self.storage[0])
+
+class VarDict(dict):
+    def __setitem__(self, key, value):
+        raise NotImplementedError("This is a frozen dictionary")
